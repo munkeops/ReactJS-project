@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import logo from './logo.svg';
 import './App.css';
+import './Post.js'
+import Post from './Post.js';
 // import { ReactComponent } from '*.svg';
 
 //{()=>{window.open(this.props.url)}}>
@@ -56,11 +58,12 @@ class Navbar extends React.Component{
       // <div className="Navbardiv">
         <div className="navcol" >
           <div style={{width:"24%"}}></div>
-          <div style={{width:"52%" }} id="heading">MyWebsite</div>
-          <div style={{width:"6%",marginRight:"7px"}}>{this.renderButton('HOME',"https://www.google.com")}</div>
-          <div style={{width:"6%",marginRight:"7px"}}>{this.renderButton('ABOUT',"https://www.google.com")}</div>
-          <div style={{width:"6%",marginRight:"7px"}}>{this.renderButton('MOVIES',"https://www.google.com")}</div>
-          <div style={{width:"6%",marginRight:"7px"}}>{this.renderButton('CONTACT',"https://www.google.com")}</div>
+          <div style={{width:"48%" }} id="heading">MyWebsite</div>
+          <div style={{width:"7%",marginRight:"7px"}}>{this.renderButton('HOME',"https://www.google.com")}</div>
+          <div style={{width:"7%",marginRight:"7px"}}>{this.renderButton('MY PAGE',"https://www.google.com")}</div>
+          <div style={{width:"7%",marginRight:"7px"}}>{this.renderButton('ADD POST',"https://www.google.com")}</div>
+          <div style={{width:"7%",marginRight:"7px"}}>{this.renderButton('ABOUT',"https://www.google.com")}</div>
+
         </div>
       // </div>
     )
@@ -77,13 +80,36 @@ class SideBar extends React.Component{
     )    
   }
 }
+class FriendsBar extends React.Component{
+
+  render(){
+    return (
+      <div className="FriendsBar">
+        <ul>
+          <li>Rohan</li>
+          <li>Raghav</li>
+          <li>Rochan</li>
+
+        </ul>
+      </div>
+    )
+  }
+}
 
 class Home extends React.Component{
 
   render(){
     return(
-      <div>
+      <div className="Home">
         <SideBar/>
+        <div className="Posts">
+          <Post user="Rohan" likes="120" content="Hello Friends"/>
+          <Post user="Aditi" likes="120" content="Hello Friends"/>
+          <Post user="Raghav" likes="120" content="Hello Friends"/>
+          <Post user="Rochan" likes="120" content="Hello Friends"/>
+        </div>
+        <FriendsBar/>
+
       </div>
     )
   }
@@ -98,21 +124,21 @@ class About extends React.Component{
   }
 }
 
-class Movies extends React.Component{
+class MyPage extends React.Component{
   render(){
     return(
       <div>
-        <p align='center'>Movies Page</p>
+        <p align='center'>My Page</p>
       </div>
     )
   }
 }
 
-class Contact extends React.Component{
+class AddPost extends React.Component{
   render(){
     return(
       <div>
-        <p align='center'>Contact Page</p>
+        <p align='center'>AddPost</p>
       </div>
     )
   }
@@ -152,13 +178,13 @@ class Page extends React.Component{
     {
       return <About/>
     }
-    else if(this.state.view==='MOVIES')
+    else if(this.state.view==='MY PAGE')
     {
-      return <Movies/>
+      return <MyPage/>
     }
-    else if(this.state.view==='CONTACT')
+    else if(this.state.view==='ADD POST')
     {
-      return <Contact/>
+      return <AddPost/>
     }
   }
   
