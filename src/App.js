@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import './App.css';
 import './Post.js'
 import Post from './Post.js';
+import Chat from './Chat.js'
 // import { ReactComponent } from '*.svg';
 
 //{()=>{window.open(this.props.url)}}>
@@ -104,11 +105,11 @@ class Home extends React.Component{
         <SideBar/>
         <div className="Posts">
           <Post user="Rohan" likes="120" content="Hello Friends"/>
-          <Post user="Aditi" likes="120" content="Hello Friends"/>
+          <Post user="Qurram" likes="120" content="Hello Friends"/>
           <Post user="Raghav" likes="120" content="Hello Friends"/>
           <Post user="Rochan" likes="120" content="Hello Friends"/>
         </div>
-        <FriendsBar/>
+        <Chat/>
 
       </div>
     )

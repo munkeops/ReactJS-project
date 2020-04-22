@@ -108,8 +108,9 @@
   display:flex;
   flex-direction: column;
   /* width: 30%; */
-  height:715px;
+  height:100%;
   background-color: whitesmoke;
+  top:60px;
 }
 
 .Home{
@@ -126,4 +127,8 @@
 .FriendsBar{
   /* position: fixed; */
   margin-left: 20px;
+}
+
+.root{
+    overflow-y: scroll;
 }
