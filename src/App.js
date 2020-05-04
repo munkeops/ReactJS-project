@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { FaAlignRight } from 'react-icons/fa'
 // import logo from './logo.svg';
 import './App.css';
 import './Post.js'
@@ -8,18 +9,31 @@ import Chat from './Chat.js'
 // import { ReactComponent } from '*.svg';
 
 //{()=>{window.open(this.props.url)}}>
+class MenuDrop extends React.Component{
+  state = {
+      toggle:false
+  }
+  Toggle = () => {
+      this.setState({toggle:!this.state.toggle})
+  }
+  render() {
+      return (
+        <>
+            <div className="navBar">
+                  <button onClick={this.Toggle}>
+                      <FaAlignRight />
+                  </button>
+                  <ul className={this.state.toggle ? "nav-links show-nav" : "nav-links"}>
+                      <li href="#">Home</li>
+                      <li href="#">About us</li>
+                      <li href="#">Contact</li>
+                  </ul>
+            </div>
+        </>
+      );
+  }
+}
 class NavButton extends React.Component{
-
-  
-  
-    // constructor(props){
-    //   super(props)
-    //   this.state={
-    //     name:this.props.name,
-    //     link:this.props.link,
-    //     func:this.props.changeView
-    //   }
-    // }
   
   click(){
     this.props.changeView(this.props.name)
@@ -28,7 +42,7 @@ class NavButton extends React.Component{
     console.log("hey");
     
     return(
-      <button className="button" onClick= {this.click.bind(this)}>   
+      <button id="button1" onClick= {this.click.bind(this)}>   
         {this.props.name}
       </button>
    )
@@ -36,13 +50,27 @@ class NavButton extends React.Component{
 }
 
 
-class Navbar extends React.Component{
+class NavBar extends React.Component{
 
-  // constructor(props){
-  //   super(props);
-
-  // }
-  
+  state = {
+    toggle:false
+  }
+  Toggle = () => {
+      this.setState({toggle:!this.state.toggle})
+  }
+  view(){
+    if(this.state.toggle===true){
+      return(
+        <div className="DroppedMenu" onClick={this.Toggle}>
+          {this.renderButton('HOME',"https://www.google.com")}
+          {this.renderButton('MY PAGE',"https://www.google.com")}
+          {this.renderButton('ADD POST',"https://www.google.com")}
+          {this.renderButton('ABOUT',"https://www.google.com")}
+        </div>
+      )
+    }
+  }
+    
   renderButton(namebut,link){
     
     return(
@@ -57,25 +85,38 @@ class Navbar extends React.Component{
   render(){
     return(
       // <div className="Navbardiv">
-        <div className="navcol" >
-          <div style={{width:"24%"}}></div>
-          <div style={{width:"48%" }} id="heading">MyWebsite</div>
-          <div style={{width:"7%",marginRight:"7px"}}>{this.renderButton('HOME',"https://www.google.com")}</div>
-          <div style={{width:"7%",marginRight:"7px"}}>{this.renderButton('MY PAGE',"https://www.google.com")}</div>
-          <div style={{width:"7%",marginRight:"7px"}}>{this.renderButton('ADD POST',"https://www.google.com")}</div>
-          <div style={{width:"7%",marginRight:"7px"}}>{this.renderButton('ABOUT',"https://www.google.com")}</div>
+        <div className="NavBar" >
+          <div className="Heading"><h1>MyWebsite</h1></div>
+          {/* <Nav/> */}
 
+          <div id="view1" className="NavButtons">
+            {this.renderButton('HOME',"https://www.google.com")}
+            {this.renderButton('MY PAGE',"https://www.google.com")}
+            {this.renderButton('ADD POST',"https://www.google.com")}
+            {this.renderButton('ABOUT',"https://www.google.com")}
+          </div>
+          <div id="view2" className="NavButtons">
+            <button className="DropMenu" id="button1" onClick={this.Toggle}>
+              {/* <img src="https://img.icons8.com/bubbles/50/000000/menu.png"/> */}
+              {/* {this.renderButton('MENU',"LMAO")} */}
+              MENU
+            </button>
+            {this.view()}
+          </div>
+
+          
         </div>
-      // </div>
     )
     
   }
 }
+
+// class 
 class SideBar extends React.Component{
   
   render(){
       return(
-        <div style={{width:"20%"}} className="SideMenu">
+        <div  className="SideBar">
 
         </div>
     )    
@@ -104,12 +145,18 @@ class Home extends React.Component{
       <div className="Home">
         <SideBar/>
         <div className="Posts">
-          <Post user="Rohan" likes="120" content="Hello Friends"/>
-          <Post user="Qurram" likes="120" content="Hello Friends"/>
-          <Post user="Raghav" likes="120" content="Hello Friends"/>
-          <Post user="Rochan" likes="120" content="Hello Friends"/>
+          <ul id="listpost">
+            <li><Post user="Rohan" likes="120" content="Hello Friends"/></li>
+            <li><Post user="Qurram" likes="120" content="Hello Friends"/></li>
+            <li><Post user="Raghav" likes="120" content="Hello Friends"/></li>
+            <li><Post user="Rochan" likes="120" content="Hello Friends"/></li>
+            <li><Post user="Anchit" likes="120" content="Hello Friends"/></li>
+            <li><Post user="Mak" likes="120" content="Hello Friends"/></li>
+            <li><Post user="Rochan" likes="120" content="Hello Friends"/></li>
+
+          </ul>
         </div>
-        <Chat/>
+        {/* <Chat/> */}
 
       </div>
     )
@@ -118,7 +165,7 @@ class Home extends React.Component{
 class About extends React.Component{
   render(){
     return(
-      <div>
+      <div className="About">
         <p align='center'>About Page</p>
       </div>
     )
@@ -192,12 +239,9 @@ class Page extends React.Component{
   
   render(){
     return(
-      <div className="row" >
-          <Navbar changeView={this.changeView}/>
-          <div className="Bodydiv">
-            {this.display()}
-            
-          </div>
+      <div className="Page" >
+          <NavBar changeView={this.changeView}/>
+          {this.display()}            
       </div>
     )
   }

@@ -40,7 +40,8 @@
 
 
 
-.button {
+#button1 {
+  grid-area: button;
   width: 110px;
   display: inline-block;
   margin-top: 5px ;
@@ -56,79 +57,180 @@
   border: none;
   border-radius: 15px;
   box-shadow: 0 6px #999;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.button:hover {background-color:rgb(5, 194, 194)}
+/* #button1:hover {background-color:rgb(5, 194, 194)} */
 
-.button:active {
-  background-color:rgb(6, 173, 173);
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
+  #button1:active {
+    background-color:rgb(6, 173, 173);
+    box-shadow: 0 5px #666;
+    /* transform: translateY(4px); */
+  }
+
+#button1:focus{outline: none !important;}
 
 
 
 
-#heading{
+.Heading{
   font-family:'Courier New', Courier, monospace;
-  font-size: larger;
-  text-align: center;
+  font-size: small;
+  text-align: left;
+  grid-area: Heading;
   
 }
 
+.NavButtons{
+  /* display: inline; */
+  grid-area: NavButtons;
+}
 
 #root{
   height: 100%;
+  width: 100%;
 }
 
-.navcol{
-  display:flex; 
+.NavBar{
+  display: sticky;
+  top:0;
+  display:grid; 
+  grid-template-areas: 
+  'Heading NavButtons';
+  grid-template-columns: 70% 30%;
+  /* gri */
   background-color:lightgrey;
-  height:60px;
-  position: fixed;
+  height:100%;
+  /* position: sticky; */
   width: 100%;
-  margin-bottom: 200px;
-
+  /* margin-bottom: 200px; */
   
 }
 
-.row{
-  display:flex;
-  flex-direction : column;
+
+.Page{
+  display:grid;
+  grid-template-areas:
+  'Navbar'
+  'Bodydiv';
+  grid-template-rows: 7% 93%;
+  /* grid-gap:10px ; */
+  
 }
 
 
-.BodyDiv{
-  display: flex;
-  /* height:1000px; */
-}
 
-.SideMenu{
-  position: fixed;
-  display:flex;
-  flex-direction: column;
-  /* width: 30%; */
+.SideBar{
+ 
+  grid-area: SideBar;
+
   height:100%;
+  width:100%;
   background-color: whitesmoke;
-  top:60px;
 }
 
 .Home{
-  display: flex;
-  margin-top: 60px;
+  z-index: -1;
+  display: grid;
+  grid-template-areas:
+  'SideBar Posts Chat';
+  grid-template-columns: 20% 55% 25%;
+  width: 100%;
+
+  grid-gap: 10px;
+
+  /* margin-top: 60px;   */
 
 }
-
 .Posts{
-  margin-left: 300px;
-
+  grid-area: Posts;
+}
+.Chat{
+  grid-area: Chat;
+  position: sticky;
 }
 
 .FriendsBar{
   /* position: fixed; */
-  margin-left: 20px;
+  /* margin-left: 20px; */
 }
 
 .root{
     overflow-y: scroll;
+}
+#listpost{
+  list-style-type:none;
+  padding-left: 0px;
+  /* padding-right: 4px; */
+
+}
+
+
+
+
+
+/* Media screen size */
+@media screen and (max-width: 768px) {
+  /* .SideBar{
+      display: none;
+  } */
+
+  /* .Posts {
+      height: auto;
+      display: flex;
+  } */
+  .NavBar{
+    position: sticky;
+    top:0;
+    /* height: 80%; */
+  }
+  .Home{
+    display: grid;
+    grid-template-areas:
+    'Posts';
+    grid-template-columns: 100%;
+  }
+  .FriendsBar{
+    display:none;
+  }
+  /* .Chat{
+    display: none;
+  } */
+  #listpost{
+    list-style-type:none;
+    padding-left: 5px;
+    padding-right: 5px;
+  
+  }
+
+  .Page{
+    display:grid;
+    grid-template-areas:
+    'Navbar'
+    'Bodydiv';
+    grid-template-rows: 4% 96%;
+    /* grid-gap:10px ; */
+    
+  }
+  
+
+
+}
+
+@media screen and (max-width: 1450px){
+  #view1{
+    display: none;
+  }
+ 
+  #button1.DropMenu:active{
+    background-color: teal !important;
+    /* border: transparent; */
+  }
+  #view2{
+    z-index: 100;
+    padding-right: 20%;
+  }
+  /* .NavBar{
+    padding-right: 20%;
+  } */
 }

@@ -69,13 +69,13 @@ class Likes extends React.Component{
         return(
             <div className="Likes">
                 
-                <div style={{display:"flex"}}>
+                <div className="Hearts" style={{display:"flex"}}>
                     <button id="likebutton" onClick={this.toggle}><img id ="likeimg" src={this.imgsrc()}/></button><p>{this.state.likes}</p>
                 </div>
-                <div style={{display:"flex"}}>
+                <div className="Comments" style={{display:"flex"}}>
                     <button id="commentbutton" ><img src="https://img.icons8.com/material-outlined/24/000000/comments.png"/></button><p>Comments</p>
                 </div>
-                <div style={{display:"flex"}}>
+                <div className="Share" style={{display:"flex"}}>
                     <button id ="sharebutton"><img src="https://img.icons8.com/ios-filled/30/000000/forward-arrow.png"/></button><p>Share</p>
                 </div>
             </div>

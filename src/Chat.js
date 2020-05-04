@@ -14,13 +14,21 @@ class MessageBuffer extends React.Component{
         )
     }
 }
+// class Messages extends React
 class Chat extends React.Component{
 
     render(){
         return(
             <div className="Chat">
+                <div id="ChatHeader">
+                    <h3>ChatHeader</h3>
+                </div>
+                <div className="ChatHist">
+                    <li>hey</li>
+                </div>
                 <MessageBuffer/>
             </div>
+            
         )
     }
 
