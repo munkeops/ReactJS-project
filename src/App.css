@@ -38,7 +38,14 @@
 } */
 
 
-
+/* html, body {
+  overflow: auto;
+}
+body {
+  min-height: 100%;
+} */
+/* html, body{min-height:100%;} */
+body{height:100vh;}
 
 #button1 {
   grid-area: button;
@@ -83,6 +90,7 @@
 
 .NavButtons{
   /* display: inline; */
+  margin-top: 2.5%;
   grid-area: NavButtons;
 }
 
@@ -92,8 +100,10 @@
 }
 
 .NavBar{
-  display: sticky;
-  top:0;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0; /* required */
+  
   display:grid; 
   grid-template-areas: 
   'Heading NavButtons';
@@ -104,6 +114,8 @@
   /* position: sticky; */
   width: 100%;
   /* margin-bottom: 200px; */
+  border-bottom :solid;
+  border-color: darkgrey;
   
 }
 
@@ -113,7 +125,9 @@
   grid-template-areas:
   'Navbar'
   'Bodydiv';
-  grid-template-rows: 7% 93%;
+  grid-template-rows: 10% 95%;
+  height: 100%;
+  
   /* grid-gap:10px ; */
   
 }
@@ -164,26 +178,14 @@
   /* padding-right: 4px; */
 
 }
-
-
-
+/* #view2{
+  display: none;
+} */
 
 
 /* Media screen size */
 @media screen and (max-width: 768px) {
-  /* .SideBar{
-      display: none;
-  } */
-
-  /* .Posts {
-      height: auto;
-      display: flex;
-  } */
-  .NavBar{
-    position: sticky;
-    top:0;
-    /* height: 80%; */
-  }
+ 
   .Home{
     display: grid;
     grid-template-areas:
@@ -198,19 +200,14 @@
   } */
   #listpost{
     list-style-type:none;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 2%;
+    padding-right: 4%;
   
   }
 
-  .Page{
-    display:grid;
-    grid-template-areas:
-    'Navbar'
-    'Bodydiv';
-    grid-template-rows: 4% 96%;
-    /* grid-gap:10px ; */
-    
+  #view2{
+    /* display:inline; */
+    margin-top: 15%;
   }
   
 
@@ -227,10 +224,24 @@
     /* border: transparent; */
   }
   #view2{
+    /* display:inline; */
+    margin-top: 5%;
+    position: relative;
+    display: inline-block;
     z-index: 100;
-    padding-right: 20%;
   }
+  #menulist{
+    list-style: none;
+    padding: 0%;
+    margin:0%;
+  }
+  
   /* .NavBar{
     padding-right: 20%;
   } */
+}
+@media screen and (min-width: 1450px){
+  #view2{
+    display: none;
+  }
 }

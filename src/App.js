@@ -1,48 +1,51 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { FaAlignRight } from 'react-icons/fa'
 // import logo from './logo.svg';
 import './App.css';
 import './Post.js'
 import Post from './Post.js';
 import Chat from './Chat.js'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 // import { ReactComponent } from '*.svg';
 
 //{()=>{window.open(this.props.url)}}>
-class MenuDrop extends React.Component{
-  state = {
-      toggle:false
-  }
-  Toggle = () => {
-      this.setState({toggle:!this.state.toggle})
-  }
-  render() {
-      return (
-        <>
-            <div className="navBar">
-                  <button onClick={this.Toggle}>
-                      <FaAlignRight />
-                  </button>
-                  <ul className={this.state.toggle ? "nav-links show-nav" : "nav-links"}>
-                      <li href="#">Home</li>
-                      <li href="#">About us</li>
-                      <li href="#">Contact</li>
-                  </ul>
-            </div>
-        </>
-      );
-  }
-}
+// class MenuDrop extends React.Component{
+//   state = {
+//       toggle:false
+//   }
+//   Toggle = () => {
+//       this.setState({toggle:!this.state.toggle})
+//   }
+//   render() {
+//       return (
+//         <>
+//             <div className="navBar">
+//                   <button onClick={this.Toggle}>
+//                       <FaAlignRight />
+//                   </button>
+//                   <ul className={this.state.toggle ? "nav-links show-nav" : "nav-links"}>
+//                       <li href="#">Home</li>
+//                       <li href="#">About us</li>
+//                       <li href="#">Contact</li>
+//                   </ul>
+//             </div>
+//         </>
+//       );
+//   }
+// }
 class NavButton extends React.Component{
   
-  click(){
-    this.props.changeView(this.props.name)
-  }
+  
   render(){
     console.log("hey");
     
     return(
-      <button id="button1" onClick= {this.click.bind(this)}>   
+      <button id="button1" >   
         {this.props.name}
       </button>
    )
@@ -62,10 +65,15 @@ class NavBar extends React.Component{
     if(this.state.toggle===true){
       return(
         <div className="DroppedMenu" onClick={this.Toggle}>
-          {this.renderButton('HOME',"https://www.google.com")}
-          {this.renderButton('MY PAGE',"https://www.google.com")}
-          {this.renderButton('ADD POST',"https://www.google.com")}
-          {this.renderButton('ABOUT',"https://www.google.com")}
+          {/* <Router> */}
+            <ul id="menulist">
+              <li><Link to="/home">{this.renderButton('HOME')}</Link></li>
+              <li><Link to="/mypage">{this.renderButton('MY PAGE')}</Link></li>
+              <li><Link to="/addpost">{this.renderButton('ADD POST')}</Link></li>
+              <li><Link to="/about">{this.renderButton('ABOUT')}</Link></li>
+            </ul>
+          {/* </Router> */}
+          
         </div>
       )
     }
@@ -86,15 +94,18 @@ class NavBar extends React.Component{
     return(
       // <div className="Navbardiv">
         <div className="NavBar" >
-          <div className="Heading"><h1>MyWebsite</h1></div>
+          <div className="Heading"><h1>ScrapBook</h1></div>
           {/* <Nav/> */}
 
-          <div id="view1" className="NavButtons">
-            {this.renderButton('HOME',"https://www.google.com")}
-            {this.renderButton('MY PAGE',"https://www.google.com")}
-            {this.renderButton('ADD POST',"https://www.google.com")}
-            {this.renderButton('ABOUT',"https://www.google.com")}
-          </div>
+          
+          {/* <Router> */}
+            <div id="view1" className="NavButtons">
+              <Link to="/home">{this.renderButton('HOME')}</Link>
+              <Link to="/mypage">{this.renderButton('MY PAGE')}</Link>
+              <Link to="/addpost">{this.renderButton('ADD POST')}</Link>
+              <Link to="/about">{this.renderButton('ABOUT')}</Link>
+            </div>            
+          {/* </Router>  */}
           <div id="view2" className="NavButtons">
             <button className="DropMenu" id="button1" onClick={this.Toggle}>
               {/* <img src="https://img.icons8.com/bubbles/50/000000/menu.png"/> */}
@@ -165,9 +176,9 @@ class Home extends React.Component{
 class About extends React.Component{
   render(){
     return(
-      <div className="About">
+      // <div className="About">
         <p align='center'>About Page</p>
-      </div>
+      // </div>
     )
   }
 }
@@ -199,49 +210,68 @@ class AddPost extends React.Component{
 // }
 class Page extends React.Component{
 
-  constructor(props){
-    super(props)
-    this.state={
-      view:'HOME'
-    }
-    this.changeView=this.changeView.bind(this)
-  }
+  // constructor(props){
+  //   super(props)
+  //   this.state={
+  //     view:'HOME'
+  //   }
+  //   this.changeView=this.changeView.bind(this)
+  // }
   
 
-  changeView(viewnum){
+  // changeView(viewnum){
     
-    this.setState({
-      view: viewnum
-    })
+  //   this.setState({
+  //     view: viewnum
+  //   })
 
-  }
+  // }
 
-  display(){
+  // display(){
 
-    if(this.state.view==='HOME')
-    {
-      return <Home/>
-    }
-    else if(this.state.view==='ABOUT')
-    {
-      return <About/>
-    }
-    else if(this.state.view==='MY PAGE')
-    {
-      return <MyPage/>
-    }
-    else if(this.state.view==='ADD POST')
-    {
-      return <AddPost/>
-    }
-  }
+  //   if(this.state.view==='HOME')
+  //   {
+  //     return <Home/>
+  //   }
+  //   else if(this.state.view==='ABOUT')
+  //   {
+  //     return <About/>
+  //   }
+  //   else if(this.state.view==='MY PAGE')
+  //   {
+  //     return <MyPage/>
+  //   }
+  //   else if(this.state.view==='ADD POST')
+  //   {
+  //     return <AddPost/>
+  //   }
+  // }
   
   
   render(){
     return(
       <div className="Page" >
-          <NavBar changeView={this.changeView}/>
-          {this.display()}            
+        <Router>
+          <NavBar/>
+          <div className="Bodydiv">
+            <Switch>
+              <Route exact path="/home">
+                  <Home/>
+              </Route>
+              <Route exact path="/addpost">
+                  <AddPost/>
+              </Route>
+              <Route path="/mypage">
+                  <MyPage/>
+              </Route>
+              <Route path="/about">
+                  <About/>
+              </Route>
+            </Switch>
+            </div>  
+        </Router>
+          
+                  
       </div>
     )
   }
