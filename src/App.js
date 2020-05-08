@@ -5,6 +5,7 @@ import './App.css';
 import './Post.js'
 import Post from './Post.js';
 import Chat from './Chat.js'
+import ImageUpload from './Upload.js'
 import {
   BrowserRouter as Router,
   Switch,
@@ -196,8 +197,9 @@ class MyPage extends React.Component{
 class AddPost extends React.Component{
   render(){
     return(
-      <div>
-        <p align='center'>AddPost</p>
+      <div className="Addpost">
+        <SideBar/>
+        <ImageUpload/>
       </div>
     )
   }

@@ -17,11 +17,39 @@ class User extends React.Component{
 
 class Content extends React.Component{
 
+    display(){
+        // console.log(this.props.img)
+        if(this.props.img){
+            return(
+                // <div className="Content">
+                    <img className="Img" src={this.props.img}/>
+                //     <p className="Caption">{this.props.content}</p>
+                // </div>
+            )
+        }
+        // else{
+        //     return(
+        //         <div className="Content">
+        //             {/* <img className="Img" src={this.props.img}/> */}
+        //             <p className="Caption">{this.props.content}</p>
+        //         </div>
+        //     )
+
+        }
+    
     render(){
+        console.log("this")
         return(
             <div className="Content">
-                <p>{this.props.content}</p>
+                <div id="Postimg">
+                    {this.display()}
+                </div>
+                <div id="Postcaption">
+                    <p className="Caption">{this.props.content}</p>
+                </div>                
             </div>
+        //    <>
+        //    </>
         )
 
     }
@@ -73,10 +101,10 @@ class Likes extends React.Component{
                     <button id="likebutton" onClick={this.toggle}><img id ="likeimg" src={this.imgsrc()}/></button><p>{this.state.likes}</p>
                 </div>
                 <div className="Comments" style={{display:"flex"}}>
-                    <button id="commentbutton" ><img src="https://img.icons8.com/material-outlined/24/000000/comments.png"/></button><p>Comments</p>
+                    <button id="commentbutton" ><img src="https://img.icons8.com/material-outlined/24/000000/comments.png"/></button><p id="invis-text">Comments</p>
                 </div>
                 <div className="Share" style={{display:"flex"}}>
-                    <button id ="sharebutton"><img src="https://img.icons8.com/ios-filled/30/000000/forward-arrow.png"/></button><p>Share</p>
+                    <button id ="sharebutton"><img src="https://img.icons8.com/ios-filled/30/000000/forward-arrow.png"/></button><p id="invis-text">Share</p>
                 </div>
             </div>
         )
@@ -97,7 +125,8 @@ class Post extends React.Component{
         this.state={
             user:this.props.user,
             content:this.props.content,
-            likes:this.props.likes
+            likes:this.props.likes,
+            img:this.props.img,
         }
     }
 
@@ -105,7 +134,7 @@ class Post extends React.Component{
         return(
             <div className='Post'>
                 <User user={this.state.user}/>
-                <Content content={this.state.content}/>
+                <Content content={this.state.content} img={this.state.img}/>
                 <Likes likes={this.state.likes}/>
                 {/* <Comments/> */}
             </div>

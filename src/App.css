@@ -156,6 +156,17 @@ body{height:100vh;}
   /* margin-top: 60px;   */
 
 }
+.Addpost{
+  z-index: -1;
+  display: grid;
+  grid-template-areas:
+  'SideBar ImageUpload Chat';
+  grid-template-columns: 20% 55% 25%;
+  width: 100%;
+  height:100%;
+
+  grid-gap: 10px;
+}
 .Posts{
   grid-area: Posts;
 }
@@ -186,6 +197,17 @@ body{height:100vh;}
 /* Media screen size */
 @media screen and (max-width: 768px) {
  
+  .Addpost{
+    
+    display: grid;
+    grid-template-areas:
+    'ImageUpload';
+    grid-template-columns: 100%;
+    width: 100%;
+    height:100%;
+  
+    grid-gap: 10px;
+  }
   .Home{
     display: grid;
     grid-template-areas:
@@ -202,7 +224,11 @@ body{height:100vh;}
     list-style-type:none;
     padding-left: 2%;
     padding-right: 4%;
+    width: 100%;
   
+  }
+  .Bodydiv{
+    height: 100%;
   }
 
   #view2{
